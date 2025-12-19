@@ -22,12 +22,12 @@ public static class CoinPatch
         var bouncy = __instance.GetOrAddComponent<Bouncy>();
         bouncy.audioObjectPrefab = __instance.coinHitSound;
         
-        bouncy.OnBounce += () =>
+        bouncy.OnBounce += (bounceCount) =>
         {
-            if (Plugin.MaxBouncesValue > 0 && bouncy.BounceCount > Plugin.MaxBouncesValue)
+            if (Plugin.MaxBouncesValue > 0 && bounceCount > Plugin.MaxBouncesValue)
             {
                 __instance.GetDeleted();
-                return;
+                return; 
             }
             
             __instance.CancelInvoke(nameof(Coin.GetDeleted));
@@ -37,7 +37,7 @@ public static class CoinPatch
 
     [HarmonyPrefix]
     [HarmonyPatch(typeof(Coin), "OnCollisionEnter")]
-    private static bool patch_OnCollisionEnter()
+    private static bool patch_OnCollisionEnter(Coin __instance, Collision collision)
     {
         return false;
     }
