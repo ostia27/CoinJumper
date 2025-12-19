@@ -60,7 +60,7 @@ namespace CoinJumper.Scripts
                 
                 _rb.velocity = reflectedDir * newSpeed;
 
-                if (audioObjectPrefab != null)
+                if (audioObjectPrefab && Plugin.SoundOnValue)
                 {
                     Instantiate(audioObjectPrefab, t.point, Quaternion.LookRotation(normal));
                 }
