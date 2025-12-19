@@ -6,7 +6,7 @@ namespace CoinJumper.Scripts
     public class Bouncy : MonoBehaviour
     {
         private const float MinSpeed = 0f;
-        private const float MaxSpeed = 1000f;
+        private const float MaxSpeed = 800f;
         public GameObject audioObjectPrefab;
         private readonly LayerMask _collisionMask = -1;
 
